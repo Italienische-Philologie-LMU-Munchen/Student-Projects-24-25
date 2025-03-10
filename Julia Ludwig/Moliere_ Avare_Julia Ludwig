@@ -1,0 +1,498 @@
+from lxml import etree
+
+# Text einlesen --> Download L'Avare from DraCor (https://www.dracor.org)
+treeText = etree.parse(r"Moliere_Avare_DraCor.xml")
+
+
+# Analyse der Redebeiträge von Élise:
+
+# Alle Zeilen von Élise:
+Elise = treeText.xpath(".//sp[@who='#elise']//s")
+for Textelise in Elise:
+    Textelise.text
+
+# Wie viel spricht Élise/ die Länge aller Redebeiträge von Élise:
+counter_Worte_Elise = 0
+for Worte_Elise in Elise:
+    Worte_Elise = Worte_Elise.text.split(" ")
+    counter_Worte_Elise += len(Worte_Elise)
+
+print("Élise sagt ungefähr " + str(counter_Worte_Elise) + " Wörter.")
+
+# Liebesausdrücke
+# Wie oft sagt Élise amour (durch Suche von "amour"):
+counter_amour_elise = 0
+
+for amour_elise in Elise:
+    if "amour" in amour_elise.text:
+        counter_amour_elise += 1
+
+print("Sie sagt \"amour\"  " + str(counter_amour_elise) + " mal.")
+
+# Wie oft benutzt Élise eine Form von aimer (durch Suche von Stamm "aim"):
+counter_aimer_elise = 0
+
+for aimer_elise in Elise:
+    if "aim" in aimer_elise.text:
+        counter_aimer_elise += 1
+
+print("Sie benutzt eine Form von \"aimer\" " +
+      str(counter_aimer_elise) + " mal.")
+
+# Wie oft sagt Élise coeur (durch Suche von "coeur"):
+counter_coeur_elise = 0
+
+for coeur_elise in Elise:
+    if "coeur" in coeur_elise.text:
+        counter_coeur_elise += 1
+
+print("Sie sagt \"coeur\" " + str(counter_coeur_elise) + " mal.")
+
+# Zusammenfassung der Ausdrücke der Liebe von Élise:
+ausdruck_liebe_elise = int(counter_amour_elise) + \
+    int(counter_aimer_elise) + int(counter_coeur_elise)
+
+print("Élise benutzt insgesamt " +
+      str(ausdruck_liebe_elise) + " Ausdrücke der Liebe.")
+
+# Wieviel Prozent der Redeanteile sind Liebesausdrücke? Und auf zwei Nachkommastellen runden
+Anteil_Liebesausdruck_elise_ungerundet = (
+    int(ausdruck_liebe_elise) / int(counter_Worte_Elise)) * 100
+Anteil_Liebesausdruck_elise = round(Anteil_Liebesausdruck_elise_ungerundet, 2)
+print("Diese machen " + str(Anteil_Liebesausdruck_elise) +
+      " Prozent ihrer Redebeiträge aus.")
+
+
+# Analyse der Redebeiträge von Valère:
+
+# Alle Zeilen von Valère:
+Valere = treeText.xpath(".//sp[@who='#valere']//s")
+for Textevalere in Valere:
+    Textevalere.text
+
+# Wie viel spricht Valère/ Länge der Redebeiträge von Valère:
+counter_Worte_Valere = 0
+for Worte_Valere in Valere:
+    Worte_Valere = Worte_Valere.text.split(" ")
+    counter_Worte_Valere += len(Worte_Valere)
+
+print("Valère sagt ungefähr " + str(counter_Worte_Valere) + " Wörter.")
+
+# Liebesausdrücke
+# Wie oft sagt Valère amour (durch Suche von "amour"):
+counter_amour_valere = 0
+
+for amour_valere in Valere:
+    if "amour" in amour_valere.text:
+        counter_amour_valere += 1
+
+print("Er sagt \"amour\" " + str(counter_amour_valere) + " mal.")
+
+# Wie oft sagt Valère eine Form von aimer (durch Suche von Stamm "aim"):
+counter_aimer_valere = 0
+
+for aimer_valere in Valere:
+    if "aim" in aimer_valere.text:
+        counter_aimer_valere += 1
+
+print("Er benutzt eine Form von \"aimer\" " +
+      str(counter_aimer_valere) + " mal.")
+
+# Wie oft sagt Valère coeur (durch Suche von "coeur"):
+counter_coeur_valere = 0
+for coeur_valere in Valere:
+    if "coeur" in coeur_valere.text:
+        counter_coeur_valere += 1
+
+print("Er sagt \"coeur\" " + str(counter_coeur_valere) + " mal.")
+
+# Zusammenfassung der Ausdrücke der Liebe von Valère:
+ausdruck_liebe_valere = int(counter_amour_valere) + \
+    int(counter_aimer_valere) + int(counter_coeur_valere)
+
+print("Valère benutzt insgesamt " +
+      str(ausdruck_liebe_valere) + " Ausdrücke der Liebe.")
+
+# Wieviel Prozent der Redeanteile sind Liebesausdrücke? Und auf zwei Nachkommastellen runden
+Anteil_Liebesausdruck_valere_ungerundet = (
+    int(ausdruck_liebe_valere) / int(counter_Worte_Valere)) * 100
+Anteil_Liebesausdruck_valere = round(
+    Anteil_Liebesausdruck_valere_ungerundet, 2)
+print("Diese Liebesausdrücke machen " +
+      str(Anteil_Liebesausdruck_valere) + " Prozent seiner Redebeiträge aus.")
+
+
+# Analyse der Redebeiträge von Cléante:
+
+# Alle Zeilen von Cléante:
+Cleante = treeText.xpath(".//sp[@who='#cleante']//s")
+for Textcleante in Cleante:
+    Textcleante.text
+
+# Wie viel spricht Cléante/ Länge der Redebeiträge von Cléante:
+counter_Worte_Cleante = 0
+for Worte_Cleante in Cleante:
+    Worte_Cleante = Worte_Cleante.text.split(" ")
+    counter_Worte_Cleante += len(Worte_Cleante)
+
+print("Cléante sagt ungefähr " + str(counter_Worte_Cleante) + " Wörter.")
+
+# Liebesausdrücke
+# Wie oft sagt Cléante amour (durch Suche von "amour"):
+counter_amour_cleante = 0
+
+for amour_cleante in Cleante:
+    if "amour" in amour_cleante.text:
+        counter_amour_cleante += 1
+
+print("Er sagt \"amour\" " + str(counter_amour_cleante) + " mal.")
+
+# Wie oft sagt Cléante eine Form von aimer (durch Suche von Stamm "aim"):
+counter_aimer_cleante = 0
+
+for aimer_cleante in Cleante:
+    if "aim" in aimer_cleante.text:
+        counter_aimer_cleante += 1
+
+print("Er benutzt eine Form von \"aimer\" " +
+      str(counter_aimer_cleante) + " mal.")
+
+# Beim Lesen ist mir aufgefallen, dass er auch das Adjektiv "aimable" benutzt
+# Wie viele davon sind das Adjektiv "aimable" (durch Suche von "aimable"):
+counter_aimable_cleante = 0
+for aimable_cleante in Cleante:
+    if "aimable" in aimable_cleante.text:
+        counter_aimable_cleante += 1
+
+print(str(counter_aimable_cleante) + " davon sind das Adjektiv \"aimable\".")
+
+# Wie oft sagt Cléante coeur (durch Suche von "coeur"):
+counter_coeur_cleante = 0
+for coeur_cleante in Valere:
+    if "coeur" in coeur_cleante.text:
+        counter_coeur_cleante += 1
+
+print("Er sagt \"coeur\" " + str(counter_coeur_cleante) + " mal.")
+
+# Zusammenfassung der Ausdrücke der Liebe von Cléante:
+ausdruck_liebe_cleante = int(counter_amour_cleante) + \
+    int(counter_aimer_cleante) + int(counter_coeur_cleante)
+
+print("Cléante benutzt insgesamt " +
+      str(ausdruck_liebe_cleante) + " Ausdrücke der Liebe.")
+
+# Wieviel Prozent der Redeanteile sind Liebesausdrücke? Und auf zwei Nachkommastellen runden
+Anteil_Liebesausdruck_cleante_ungerundet = (
+    int(ausdruck_liebe_cleante) / int(counter_Worte_Cleante)) * 100
+Anteil_Liebesausdruck_cleante = round(
+    Anteil_Liebesausdruck_cleante_ungerundet, 2)
+print("Diese Liebesausdrücke machen " +
+      str(Anteil_Liebesausdruck_cleante) + " Prozent seiner Redebeiträge aus.")
+
+
+# Analyse der Redebeiträge von Mariane
+
+# Alle Zeilen von Mariane:
+Mariane = treeText.xpath(".//sp[@who='#mariane']//s")
+for Textmariane in Mariane:
+    Textmariane.text
+
+# Wie viel spricht Mariane/ Länge der Redebeiträge von Mariane:
+counter_Worte_Mariane = 0
+for Worte_Mariane in Mariane:
+    Worte_Mariane = Worte_Mariane.text.split(" ")
+    counter_Worte_Mariane += len(Worte_Mariane)
+
+print("Mariane sagt ungefähr " + str(counter_Worte_Mariane) + " Wörter.")
+
+# Liebesausdrücke
+# Wie oft sagt Mariane amour (durch Suche von "amour"):
+counter_amour_mariane = 0
+
+for amour_mariane in Mariane:
+    if "amour" in amour_mariane.text:
+        counter_amour_mariane += 1
+
+print("Sie sagt \"amour\" " + str(counter_amour_mariane) + " mal.")
+
+# Wie oft sagt Mariane eine Form von aimer (durch Suche von Stamm "aim"):
+counter_aimer_mariane = 0
+
+for aimer_mariane in Mariane:
+    if "aim" in aimer_mariane.text:
+        counter_aimer_mariane += 1
+
+print("Sie benutzt eine Form von \"aimer\" " +
+      str(counter_aimer_mariane) + " mal.")
+
+# Wie oft sagt Mariane coeur (durch Suche von "coeur"):
+counter_coeur_mariane = 0
+for coeur_mariane in Mariane:
+    if "coeur" in coeur_mariane.text:
+        counter_coeur_mariane += 1
+
+print("Sie sagt \"coeur\" " + str(counter_coeur_mariane) + " mal.")
+
+# Zusammenfassung der Ausdrücke der Liebe von Mariane:
+ausdruck_liebe_mariane = int(counter_amour_mariane) + \
+    int(counter_aimer_mariane) + int(counter_coeur_mariane)
+
+print("Mariane benutzt insgesamt " +
+      str(ausdruck_liebe_mariane) + " Ausdrücke der Liebe.")
+
+# Wieviel Prozent der Redeanteile sind Liebesausdrücke? Und auf zwei Nachkommastellen runden
+Anteil_Liebesausdruck_mariane_ungerundet = (
+    int(ausdruck_liebe_mariane) / int(counter_Worte_Mariane)) * 100
+Anteil_Liebesausdruck_mariane = round(
+    Anteil_Liebesausdruck_mariane_ungerundet, 2)
+print("Diese machen " + str(Anteil_Liebesausdruck_mariane) +
+      " Prozent ihrer Redebeiträge aus.")
+
+
+# Analyse der Redebeiträge von Harpagon
+
+# Alle Zeilen von Harpagon:
+Harpagon = treeText.xpath(".//sp[@who='#harpagon']//s")
+for Textharpagon in Harpagon:
+    Textharpagon.text
+
+# Wie viel spricht Harpagon/ Länge der Redebeiträge von Harpagon:
+counter_Worte_Harpagon = 0
+for Worte_Harpagon in Harpagon:
+    Worte_Harpagon = Worte_Harpagon.text.split(" ")
+    counter_Worte_Harpagon += len(Worte_Harpagon)
+
+print("Harpagon sagt ungefähr " + str(counter_Worte_Harpagon) + " Wörter.")
+
+# Liebesausdrücke
+# Wie oft sagt Harpagon amour (durch Suche von "amour"):
+counter_amour_harpagon = 0
+
+for amour_harpagon in Harpagon:
+    if "amour" in amour_harpagon.text:
+        counter_amour_harpagon += 1
+
+print("Er sagt \"amour\" " + str(counter_amour_harpagon) + " mal.")
+
+# Wie oft sagt Harpagon eine Form von aimer (durch Suche von Stamm "aim"):
+# Harpagon benutzt aber auch "vraiment", also Zahl(aim) - Zahl(vraiment) = Zahl(Form von aimer)
+counter_aim_harpagon = 0
+counter_vraiment_harpagon = 0
+counter_aimer_harpagon = 0
+
+for aim_harpagon in Harpagon:
+    if "aim" in aim_harpagon.text:
+        counter_aim_harpagon += 1
+
+for vraiment_harpagon in Harpagon:
+    if "vraiment" in vraiment_harpagon.text:
+        counter_vraiment_harpagon += 1
+
+
+counter_aimer_harpagon = int(counter_aim_harpagon) - \
+    int(counter_vraiment_harpagon)
+
+print("Er benutzt eine Form von \"aimer\" " +
+      str(counter_aimer_harpagon) + " mal.")
+
+# Wie oft sagt Harpagon coeur (durch Suche von "coeur"):
+counter_coeur_harpagon = 0
+for coeur_harpagon in Harpagon:
+    if "coeur" in coeur_harpagon.text:
+        counter_coeur_harpagon += 1
+
+print("Er sagt \"coeur\" " + str(counter_coeur_harpagon) + " mal.")
+
+# Zusammenfassung der Ausdrücke der Liebe von Harpagon:
+ausdruck_liebe_harpagon = int(counter_amour_harpagon) + \
+    int(counter_aimer_harpagon) + int(counter_coeur_harpagon)
+
+print("Harpagon benutzt insgesamt " +
+      str(ausdruck_liebe_harpagon) + " Ausdrücke der Liebe.")
+
+# Wieviel Prozent der Redeanteile sind Liebesausdrücke? Und auf zwei Nachkommastellen runden
+Anteil_Liebesausdruck_harpagon_ungerundet = (
+    int(ausdruck_liebe_harpagon) / int(counter_Worte_Harpagon)) * 100
+Anteil_Liebesausdruck_harpagon = round(
+    Anteil_Liebesausdruck_harpagon_ungerundet, 2)
+print("Diese Liebesausdrücke machen " +
+      str(Anteil_Liebesausdruck_harpagon) + " Prozent seiner Redebeiträge aus.")
+
+
+# Vergleiche der Ergebnisse
+
+# Definieren einer Liste mit den Anzahlen der Liebesausdrücke der Hauptfiguren (bei den einzelnen Figuren definiert):
+Redeanteile_Liebe = [Anteil_Liebesausdruck_harpagon, Anteil_Liebesausdruck_cleante,
+                     Anteil_Liebesausdruck_elise, Anteil_Liebesausdruck_mariane, Anteil_Liebesausdruck_valere]
+
+# Wer drückt seine Liebe am meisten aus?
+# Um es auch in ein Dokument schreiben zu können, Ergebnissätze ausformulieren (konnte es so einfacher in das Dokument schreiben)
+# Ausformulieren von Ergebnissätzen
+Elise_max = "Élise drückt ihre Liebe am meisten aus."
+Cleante_max = "Cléante drückt seine Liebe am meisten aus."
+Valere_max = "Valère drückt seine Liebe am meisten aus."
+Mariane_max = "Mariane drückt ihre Liebe am meisten aus."
+Harpagon_max = "Harpagon drückt seine Liebe am meisten aus."
+
+
+max_Redeanteile_Liebe = max(Redeanteile_Liebe)
+for max_Redeanteile_Liebe_alle in Redeanteile_Liebe:
+    if max_Redeanteile_Liebe is Anteil_Liebesausdruck_elise:
+        max_Redeanteile_Liebe_alle = Elise_max
+    if max_Redeanteile_Liebe is Anteil_Liebesausdruck_cleante:
+        max_Redeanteile_Liebe_alle = Cleante_max
+    if max_Redeanteile_Liebe is Anteil_Liebesausdruck_valere:
+        max_Redeanteile_Liebe_alle = Valere_max
+    if max_Redeanteile_Liebe is Anteil_Liebesausdruck_mariane:
+        max_Redeanteile_Liebe_alle = Mariane_max
+    if max_Redeanteile_Liebe is Anteil_Liebesausdruck_harpagon:
+        max_Redeanteile_Liebe_alle = Harpagon_max
+print(str(max_Redeanteile_Liebe_alle))
+
+
+# Wer drückt seine Liebe am wenigsten aus?
+# Ausformulieren von Ergebnissätzen
+Elise_min = "Élise drückt ihre Liebe am wenigsten aus."
+Cleante_min = "Cléante drückt seine Liebe am wenigsten aus"
+Valere_min = "Valère drückt seine Liebe am wenigsten aus."
+Mariane_min = "Mariane drückt ihre Liebe am wenigsten aus."
+Harpagon_min = "Harpagon drückt seine Liebe am wenigsten aus."
+
+min_Redeanteile_Liebe = min(Redeanteile_Liebe)
+for min_Redeanteile_Liebe_alle in Redeanteile_Liebe:
+    if min_Redeanteile_Liebe is Anteil_Liebesausdruck_elise:
+        min_Redeanteile_Liebe_alle = Elise_min
+    if min_Redeanteile_Liebe is Anteil_Liebesausdruck_cleante:
+        min_Redeanteile_Liebe_alle = Cleante_min
+    if min_Redeanteile_Liebe is Anteil_Liebesausdruck_valere:
+        min_Redeanteile_Liebe_alle = Valere_min
+    if min_Redeanteile_Liebe is Anteil_Liebesausdruck_mariane:
+        min_Redeanteile_Liebe_alle = Mariane_min
+    if min_Redeanteile_Liebe is Anteil_Liebesausdruck_harpagon:
+        min_Redeanteile_Liebe_alle = Harpagon_min
+print(str(min_Redeanteile_Liebe_alle))
+
+
+# Welche Figur spricht am meisten/ am wenigsten?
+# Definieren einer Liste mit den Längen der Redebeiträge der Hauptfiguren (bei den einzelnen Figuren definiert):
+Redeanteile = [counter_Worte_Cleante, counter_Worte_Elise,
+               counter_Worte_Harpagon, counter_Worte_Mariane, counter_Worte_Valere]
+
+# Um es auch in ein Dokument schreiben zu können, Ergebnissätze ausformulierenn(konnte so einfacher in das Dokument schreiben)
+# Ausformulieren von Ergebnissätzen
+max_Redeanteile_elise = "Élise spricht am meisten."
+max_Redeanteile_cleante = "Cléante spricht am meisten."
+max_Redeanteile_valere = "Valère spricht am meisten."
+max_Redeanteile_mariane = "Mariane spricht am meisten."
+max_Redeanteile_harpagon = "Harpagon spricht am meisten."
+
+# Welche der Hauptfiguren spricht am meisten?
+max_Redeanteile = max(Redeanteile)
+for max_Redeanteile_gesamt in Redeanteile:
+    if max_Redeanteile is counter_Worte_Elise:
+        max_Redeanteile_gesamt = max_Redeanteile_elise
+    if max_Redeanteile is counter_Worte_Cleante:
+        max_Redeanteile_gesamt = max_Redeanteile_cleante
+    if max_Redeanteile is counter_Worte_Valere:
+        max_Redeanteile_gesamt = max_Redeanteile_valere
+    if max_Redeanteile is counter_Worte_Mariane:
+        max_Redeanteile_gesamt = max_Redeanteile_mariane
+    if max_Redeanteile is counter_Worte_Harpagon:
+        max_Redeanteile_gesamt = max_Redeanteile_harpagon
+print(str(max_Redeanteile_gesamt))
+
+# Welche der Hauptfiguren spricht am wenigsten?
+# Ausformulieren der Ergebnissätze
+min_Redeanteile_elise = "Élise spricht am wenigsten."
+min_Redeanteile_cleante = "Cléante spricht am wenigsten."
+min_Redeanteile_valere = "Valère spricht am wenigsten."
+min_Redeanteile_mariane = "Mariane spricht am wenigsten."
+min_Redeanteile_harpagon = "Harpagon spricht am wenigsten."
+
+min_Redeanteile = min(Redeanteile)
+for min_Redeanteile_gesamt in Redeanteile:
+    if min_Redeanteile is counter_Worte_Elise:
+        min_Redeanteile_gesamt = min_Redeanteile_elise
+    if min_Redeanteile is counter_Worte_Cleante:
+        min_Redeanteile_gesamt = min_Redeanteile_cleante
+    if min_Redeanteile is counter_Worte_Valere:
+        min_Redeanteile_gesamt = min_Redeanteile_valere
+    if min_Redeanteile is counter_Worte_Mariane:
+        min_Redeanteile_gesamt = min_Redeanteile_mariane
+    if min_Redeanteile is counter_Worte_Harpagon:
+        min_Redeanteile_gesamt = min_Redeanteile_harpagon
+print(str(min_Redeanteile_gesamt))
+
+
+# Die Ergebnisse in einer Datei zusammenführen
+
+f_write = open(r"Result_Projekt_Avare.txt", "w", encoding="utf-8")
+f_write.write("Élise sagt ungefähr " + str(counter_Worte_Elise) + " Wörter."
+              "\nSie sagt \"amour\"  " + str(counter_amour_elise) + " mal."
+              "\nSie benutzt eine Form von \"aimer\" " +
+              str(counter_aimer_elise) + " mal."
+              "\nSie sagt \"coeur\" " + str(counter_coeur_elise) + " mal."
+              "\nÉlise benutzt insgesamt " +
+              str(ausdruck_liebe_elise) + " Ausdrücke der Liebe."
+              "\n"
+              "\nValère sagt ungefähr " +
+              str(counter_Worte_Valere) + " Wörter."
+              "\nEr sagt \"amour\" " + str(counter_amour_valere) + " mal."
+              "\nEr benutzt eine Form von \"aimer\" " +
+              str(counter_aimer_valere) + " mal."
+              "\nEr sagt \"coeur\" " + str(counter_coeur_valere) + " mal."
+              "\nValère benutzt insgesamt " +
+              str(ausdruck_liebe_valere) + " Ausdrücke der Liebe."
+              "\n"
+              "\nCléante sagt ungefähr " +
+              str(counter_Worte_Cleante) + " Wörter."
+              "\nEr sagt \"amour\" " + str(counter_amour_cleante) + " mal."
+              "\nEr benutzt eine Form von \"aimer\" " +
+              str(counter_aimer_cleante) + " mal."
+              "\nDavon sind " + str(counter_aimable_cleante) +
+              " das Adjektiv \"aimable\"."
+              "\nEr sagt \"coeur\" " + str(counter_coeur_cleante) + " mal."
+              "\nCléante benutzt insgesamt " +
+              str(ausdruck_liebe_cleante) + " Ausdrücke der Liebe."
+              "\n"
+              "\nMariane sagt ungefähr " +
+              str(counter_Worte_Mariane) + " Wörter."
+              "\nSie sagt \"amour\"  " + str(counter_amour_mariane) + " mal."
+              "\nSie benutzt eine Form von \"aimer\" " +
+              str(counter_aimer_mariane) + " mal."
+              "\nSie sagt \"coeur\" " + str(counter_coeur_mariane) + " mal."
+              "\nMariane benutzt insgesamt " +
+              str(ausdruck_liebe_mariane) + " Ausdrücke der Liebe."
+              "\n"
+              "\nHarpagon sagt ungefähr " +
+              str(counter_Worte_Harpagon) + " Wörter."
+              "\nEr sagt \"amour\" " + str(counter_amour_harpagon) + " mal."
+              "\nEr benutzt eine Form von \"aimer\" " +
+              str(counter_aimer_harpagon) + " mal."
+              "\nEr sagt \"coeur\" " + str(counter_coeur_harpagon) + " mal."
+              "\nHarpagon benutzt insgesamt " +
+              str(ausdruck_liebe_harpagon) + " Ausdrücke der Liebe."
+              "\n"
+              "\nDie oben genannten Liebesausdrücke machen " +
+              str(Anteil_Liebesausdruck_elise) +
+              " Prozent der Redebeiträge von Élise aus."
+              "\nDie oben genannten Liebesausdrücke machen " +
+              str(Anteil_Liebesausdruck_valere) +
+              " Prozent der Redebeiträge von Valère aus."
+              "\nDie oben genannten Liebesausdrücke machen " +
+              str(Anteil_Liebesausdruck_cleante) +
+              " Prozent der Redebeiträge von Cléante aus."
+              "\nDie oben genannten Liebesausdrücke machen " +
+              str(Anteil_Liebesausdruck_mariane) +
+              " Prozent der Redebeiträge von Mariane aus."
+              "\nDie oben genannten Liebesausdrücke machen " +
+              str(Anteil_Liebesausdruck_harpagon) +
+              " Prozent der Redebeiträge von Harpagon aus."
+              "\n"
+              "\n" + str(max_Redeanteile_Liebe_alle) +
+              "\n" + str(min_Redeanteile_Liebe_alle) +
+              "\n"
+              "\n" + str(max_Redeanteile_gesamt) +
+              "\n" + str(min_Redeanteile_gesamt)
+              )
+f_write.close()
